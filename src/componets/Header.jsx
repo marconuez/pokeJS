@@ -1,61 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
 
 import '../styles/HeaderStyle.css'
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-import '../styles/prueba.css';
-
-export const Header = () => {
-    const [randomPokemons, setRandomPokemons] = useState([]);
-    const [isLoading, setisLoading] = useState(false);
-
-    useEffect(() => {
-        const fetchRandomPokemon = async () => {
-        try {
-            const getRandomPokemonId = () => Math.floor(Math.random() * 200) + 1; // funcion que trae aleatorios
-            //[100, 4,30,25]
-            const pokemonIds = Array.from({ length: 5 }, getRandomPokemonId); // Array .from(tamañ, contenido o como llenar el contenido)
-
-            const fetchedPokemons = [];
-
-            for (const id of pokemonIds) {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-            const data = await response.json();
-            fetchedPokemons.push(data);
-            }
-
-            setRandomPokemons(fetchedPokemons);
-        } catch (error) {
-            console.error("Error capturando Pokemon data", error);
-        }
-        setisLoading(true);
-        };
-        fetchRandomPokemon();
-    }, []);
-
+export const Header = ({randomPokemons, isLoading}) => {
+  // console.log(randomPokemons);
   return (
-    <Swiper
-    slidesPerView={3}
-    spaceBetween={0}
-    pagination={{
-      clickable: true,
-    }}
-    modules={[Pagination]}
-    className="mySwiper"
-  >
     <div className="contenedor">
         {isLoading ? (
       randomPokemons.map((item, index) => {
         return (
-            <SwiperSlide>
-                <div className='cardPokemon' key={item.index}>
+                <div className='cardPokemones' key={index}>
                   <div className='vertical'><h3 className='numero'>#0{item.id}</h3></div>
                  <img
-                  className="imgPokemones"
+                  className="saludos"
                   src={item.sprites.other["official-artwork"]["front_default"]}
                 />
                 <p className='namePokemon'>{item.name}</p>
@@ -94,13 +51,15 @@ export const Header = () => {
                     else  if(stat.type.name === 'psychic'){
                       return <p className='pill psychic'>{stat.type.name}</p>
                     }
+                    else  if(stat.type.name === 'dragon'){
+                      return <p className='pill dragon'>{stat.type.name}</p>
+                    }
                     return (
                       <p className='pill'>{stat.type.name}</p>
                     )
                   })}
                 </div>
               </div>
-        </SwiperSlide>
         );
       })
     ) : (
@@ -118,6 +77,5 @@ export const Header = () => {
         </div>
     )}
     </div>
-  </Swiper>
   )
 }

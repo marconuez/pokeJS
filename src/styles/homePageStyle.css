@@ -1,0 +1,16 @@
+.papito{
+    display: flex;
+    width: 100%;
+}
+.izquierda{
+    width: 50%;
+}
+.derecha{
+    position: fixed;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    /* border: 2px white dashed; */
+}

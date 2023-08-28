@@ -1,52 +1,51 @@
 import React, { useEffect, useState } from 'react'
-import { Header } from '../componets/Header'
-import '../styles/homePageStyle.css'
-// import { HeaderAll } from '../componets/HeaderAll'
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import { Pagination } from 'swiper/modules';
+
 import '../styles/HeaderStyleAll.css'
 
+// import 'swiper/css';
+// import 'swiper/css/pagination';
 
-export const HomePage = () => {
-  const [randomPokemons, setRandomPokemons] = useState([]);
-  const [isLoading, setisLoading] = useState(false);
-  const [choose, setChoose] = useState([])
-  const [ischoosing, setIschoosing] = useState(false)
+// import '../styles/prueba.css';
 
-  useEffect(() => {
-      const fetchRandomPokemon = async () => {
-      try {
-          const getRandomPokemonId = () => Math.floor(Math.random() * 200) + 1; // funcion que trae aleatorios
-          //[100, 4,30,25]
-          const pokemonIds = Array.from({ length: 150 }, getRandomPokemonId); // Array .from(tamañ, contenido o como llenar el contenido)
+export const HeaderAll = () => {
+    const [randomPokemons, setRandomPokemons] = useState([]);
+    const [isLoading, setisLoading] = useState(false);
 
-          const fetchedPokemons = [];
+    useEffect(() => {
+        const fetchRandomPokemon = async () => {
+        try {
+            const getRandomPokemonId = () => Math.floor(Math.random() * 200) + 1; // funcion que trae aleatorios
+            //[100, 4,30,25]
+            const pokemonIds = Array.from({ length: 150 }, getRandomPokemonId); // Array .from(tamañ, contenido o como llenar el contenido)
 
-          for (const id of pokemonIds) {
-          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-          const data = await response.json();
-          fetchedPokemons.push(data);
-          }
+            const fetchedPokemons = [];
 
-          setRandomPokemons(fetchedPokemons);
-      } catch (error) {
-          console.error("Error capturando Pokemon data", error);
-      }
-      setisLoading(true);
-      };
-      fetchRandomPokemon();
-  }, []);
+            for (const id of pokemonIds) {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+            const data = await response.json();
+            fetchedPokemons.push(data);
+            }
+
+            setRandomPokemons(fetchedPokemons);
+        } catch (error) {
+            console.error("Error capturando Pokemon data", error);
+        }
+        setisLoading(true);
+        };
+        fetchRandomPokemon();
+    }, []);
 
 
-  const elijepokemon = (data) =>{
-    setChoose([data]);
-    setIschoosing(true)
-    console.log(choose);
-  }
+    const elijepokemon = (data) =>{
+        console.log(data.name);
+    }
+
   return (
-    <div className='papito'>
-      <div className='izquierda'>
-      <div className="contenedor">
+    <div className="contenedor">
         {isLoading ? (
-        randomPokemons.map((item, index) => {
+      randomPokemons.map((item, index) => {
         return (
                 <div className='cardPokemon' key={index} onClick={()=>elijepokemon(item)}>
                   {/* <div className='vertical'><h3 className='numero'>#0{item.id}</h3></div> */}
@@ -55,7 +54,7 @@ export const HomePage = () => {
                   src={item.sprites.other["official-artwork"]["front_default"]}
                 />
                 <p className='namePokemon'>{item.name}</p>
-                <div key={index} style={{display:'flex'}}>
+                <div style={{display:'flex'}}>
                   {item.types.map(stat =>{
                     if(stat.type.name === 'water'){
                       return <p className='pill water'>{stat.type.name}</p>
@@ -115,19 +114,6 @@ export const HomePage = () => {
         <h1 className='loading'>Cargando pokemones..</h1>
         </div>
     )}
-    </div>
-      </div>
-      <div className='derecha'>
-        {
-          ischoosing
-          ?(
-            <Header randomPokemons={choose} isLoading={isLoading}/> 
-          )
-          : null
-        }
-
-      </div>
-    {/* <div>HomePage</div> */}
     </div>
   )
 }
