@@ -1,0 +1,264 @@
+.contenedor{
+    background-color: rgb(41, 36, 36);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.imgPokemones{
+    max-width: 150px;
+    z-index: 0;
+}
+
+.cardPokemon{
+    padding: 20px;
+    background-color: rgb(36, 31, 31);
+    margin: 10px;
+    border-radius: 50px;
+    border: 1px white solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.vertical{
+    /* writing-mode: vertical-lr; */
+}
+
+.numero{
+    color: rgba(255, 255, 255, 0.332);
+    font-weight: bold;
+    font-size: 40px;
+    position: absolute;
+    left: 12px;
+    top: 0;
+    /* text-orientation: upright; */
+}
+
+.cardPokemon:hover{
+    background-color: rgb(69, 67, 67);
+    /* padding: 50px; */
+    border: 1px rgb(57, 253, 116) solid;
+
+    .imgPokemones{
+        max-width: 300px;
+        overflow: hidden;
+        transition: all 1.0s ease;
+    }
+}
+
+.namePokemon{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+.loading{
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.carga{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes square-animation {
+    0% {
+     left: 0;
+     top: 0;
+    }
+   
+    10.5% {
+     left: 0;
+     top: 0;
+    }
+   
+    12.5% {
+     left: 32px;
+     top: 0;
+    }
+   
+    23% {
+     left: 32px;
+     top: 0;
+    }
+   
+    25% {
+     left: 64px;
+     top: 0;
+    }
+   
+    35.5% {
+     left: 64px;
+     top: 0;
+    }
+   
+    37.5% {
+     left: 64px;
+     top: 32px;
+    }
+   
+    48% {
+     left: 64px;
+     top: 32px;
+    }
+   
+    50% {
+     left: 32px;
+     top: 32px;
+    }
+   
+    60.5% {
+     left: 32px;
+     top: 32px;
+    }
+   
+    62.5% {
+     left: 32px;
+     top: 64px;
+    }
+   
+    73% {
+     left: 32px;
+     top: 64px;
+    }
+   
+    75% {
+     left: 0;
+     top: 64px;
+    }
+   
+    85.5% {
+     left: 0;
+     top: 64px;
+    }
+   
+    87.5% {
+     left: 0;
+     top: 32px;
+    }
+   
+    98% {
+     left: 0;
+     top: 32px;
+    }
+   
+    100% {
+     left: 0;
+     top: 0;
+    }
+   }
+   
+   .loader {
+    margin-top: 20px;
+    /* position: relative; */
+    width: 96px;
+    height: 96px;
+    transform: rotate(45deg);
+   }
+   
+   .loader-square {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    margin: 2px;
+    border-radius: 0px;
+    background: white;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    animation: square-animation 10s ease-in-out infinite both;
+   }
+   
+   .loader-square:nth-of-type(0) {
+    animation-delay: 0s;
+   }
+   
+   .loader-square:nth-of-type(1) {
+    animation-delay: -1.4285714286s;
+   }
+   
+   .loader-square:nth-of-type(2) {
+    animation-delay: -2.8571428571s;
+   }
+   
+   .loader-square:nth-of-type(3) {
+    animation-delay: -4.2857142857s;
+   }
+   
+   .loader-square:nth-of-type(4) {
+    animation-delay: -5.7142857143s;
+   }
+   
+   .loader-square:nth-of-type(5) {
+    animation-delay: -7.1428571429s;
+   }
+   
+   .loader-square:nth-of-type(6) {
+    animation-delay: -8.5714285714s;
+   }
+   
+   .loader-square:nth-of-type(7) {
+    animation-delay: -10s;
+   }
+
+
+.pill{
+    padding: 9px;
+    background-color: rgb(25, 28, 28);
+    border-radius: 50px;
+    margin: 10px
+}
+
+.water{
+    background-color: rgb(94, 185, 230);
+}
+
+.poison{
+    background-color: rgb(66, 77, 174);
+}
+
+.fire{
+    background-color: rgb(187, 115, 71);
+}
+
+.electric{
+    background-color: rgb(222, 255, 36);
+}
+
+
+.normal{
+    background-color: #a8a878;
+}
+.rock{
+    background-color: brown;
+}
+.ground{
+    background-color: green;
+}
+
+.grass{
+    background-color: #78c850;
+}
+
+.flying{
+    background-color: #a890f0;
+}
+
+.ice{
+    background-color: #98d8d8
+}
+
+.bug{
+    background-color: #a8b820;
+}
+
+.psychic{
+    background-color: #f85888;
+}
